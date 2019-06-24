@@ -1,0 +1,19 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BikeControl2.js">
+    <Files>
+      <File FileName="Assets\Scripts\ScoreAndLives.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PauseMenuScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\gamestart.cs" Line="59" Column="4" />
+      <File FileName="Assets\Scripts\startupScript.cs" Line="21" Column="40" />
+      <File FileName="Assets\Scripts\levelgui.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\button.cs" Line="21" Column="4" />
+      <File FileName="Assets\Scripts\LevelComplete.cs" Line="15" Column="32" />
+      <File FileName="Assets\Scripts\BikeControl2.js" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
