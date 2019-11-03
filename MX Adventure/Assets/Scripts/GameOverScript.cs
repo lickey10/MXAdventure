@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Facebook.MiniJSON;
 
 public class GameOverScript : MonoBehaviour {
 	public GUIStyle customGuiStyle;
@@ -15,16 +14,13 @@ public class GameOverScript : MonoBehaviour {
 
 	void Awake()
 	{
-		FB.Init(SetInit,OnHideUnity);
+		
 	}
 
 	private void SetInit()
 	{
 		enabled = true;
-		if(FB.IsLoggedIn)
-		{
-			OnLoggedIn();
-		}
+		
 	}
 
 	private void OnHideUnity(bool isGameShown)
@@ -35,12 +31,6 @@ public class GameOverScript : MonoBehaviour {
 		}
 		else
 			Time.timeScale = 1;
-	}
-
-	void LoginCallback(FBResult result)
-	{
-		if(FB.IsLoggedIn)
-			OnLoggedIn();
 	}
 
 	void OnLoggedIn()
@@ -108,56 +98,56 @@ public class GameOverScript : MonoBehaviour {
 
 		GUI.skin = MenuSkin;
 		
-		if (!FB.IsLoggedIn)
-		{			
-			if (GUI.Button(new Rect(
-				(Screen.width-200)/2,
-				Screen.height - 65,
-				200,
-				60
-				), "", MenuSkin.GetStyle("button_login")))
-			{
-				try {
-					FB.Login("publish_actions", LoginCallback);
-				} catch (System.Exception ex) {
-					fbException = ex;
-					fbMessage = ex.Message;
+		//if (!FB.IsLoggedIn)
+		//{			
+		//	if (GUI.Button(new Rect(
+		//		(Screen.width-200)/2,
+		//		Screen.height - 65,
+		//		200,
+		//		60
+		//		), "", MenuSkin.GetStyle("button_login")))
+		//	{
+		//		try {
+		//			FB.Login("publish_actions", LoginCallback);
+		//		} catch (System.Exception ex) {
+		//			fbException = ex;
+		//			fbMessage = ex.Message;
 					
-				}
-			}
-		}
-		else if(!sharedToFB) //display share dialog
-		{
-			try {
-				//check for a new highscore and modify message
-				string newHighScoreMessage = "";
-				string newHigherLevelMessage = "";
+		//		}
+		//	}
+		//}
+		//else if(!sharedToFB) //display share dialog
+		//{
+		//	try {
+		//		//check for a new highscore and modify message
+		//		string newHighScoreMessage = "";
+		//		string newHigherLevelMessage = "";
 				
-				if(gamestate.Instance.NewHighScore())
-				{
-					newHighScoreMessage = "I just got a new High Score on MX Adventure: "+ gamestate.Instance.GetScore() +"! Can you beat it?";
-				}
-				else if(gamestate.Instance.NewHigherLevel())
-				{
-					newHigherLevelMessage = "I just reached level "+ gamestate.Instance.getLevelProgress() +"! Can you beat it?";
-				}
-				else
-					newHighScoreMessage = "I got a score of "+ gamestate.Instance.GetScore() +" on MX Adventure!";
+		//		if(gamestate.Instance.NewHighScore())
+		//		{
+		//			newHighScoreMessage = "I just got a new High Score on MX Adventure: "+ gamestate.Instance.GetScore() +"! Can you beat it?";
+		//		}
+		//		else if(gamestate.Instance.NewHigherLevel())
+		//		{
+		//			newHigherLevelMessage = "I just reached level "+ gamestate.Instance.getLevelProgress() +"! Can you beat it?";
+		//		}
+		//		else
+		//			newHighScoreMessage = "I got a score of "+ gamestate.Instance.GetScore() +" on MX Adventure!";
 
 				
 				
 				
-				FB.Feed(
-					linkCaption: newHighScoreMessage + newHigherLevelMessage,
-					//picture: "http://www.promotocross.com/sites/default/files/WPS_FLYracing_logos_640x120_v3.jpg",
-					linkName: "Checkout my MX Skills!",
-					link: "https://play.google.com/store/apps/details?id=com.SnickleFritz.MXAdventure"
-					);
+		//		FB.Feed(
+		//			linkCaption: newHighScoreMessage + newHigherLevelMessage,
+		//			//picture: "http://www.promotocross.com/sites/default/files/WPS_FLYracing_logos_640x120_v3.jpg",
+		//			linkName: "Checkout my MX Skills!",
+		//			link: "https://play.google.com/store/apps/details?id=com.SnickleFritz.MXAdventure"
+		//			);
 				
-				sharedToFB = true;
-			} catch (System.Exception ex) {
-				print(ex.Message);
-			}
-		}
+		//		sharedToFB = true;
+		//	} catch (System.Exception ex) {
+		//		print(ex.Message);
+		//	}
+		//}
 	}
 }
